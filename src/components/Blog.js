@@ -106,19 +106,22 @@ const Home2 = () => {
                           </a>
                         </h3>
 
-                        <p class="blog-text">{posts.description}</p>
+                        <div
+                          className="blog-text"
+                          dangerouslySetInnerHTML={{
+                            __html: posts.description,
+                          }}
+                        />
 
                         <div class="wrapper-flex">
                           <div class="wrapper">
-                            <a href="#" class="h4">
-                              {posts.name}
-                            </a>
+                            <p class="h4">{posts.name}</p>
 
-                            {/* <p class="text-sm">
+                            <p class="text-sm">
                               <time datetime="2021-09-21">
-                                {posts.tanggal_upload}
+                                {/* {posts.createdAt} */}
                               </time>
-                            </p> */}
+                            </p>
                           </div>
                         </div>
                       </div>
@@ -150,7 +153,7 @@ const Home2 = () => {
               ))}
             </div>
             <div class="contact">
-              <h2 class="h2">About Us</h2>
+              <h2 class="h2">Tentang kami</h2>
 
               <div class="wrapper">
                 <p>
@@ -214,7 +217,7 @@ const Home2 = () => {
               </div>
             </div>
             <div class="newsletter">
-              <h2 class="h2">Latest Post</h2>
+              <h2 class="h2">Postingan Terbaru</h2>
               {post.map((posts) => {
                 return (
                   <div class="wrapper">

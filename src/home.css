@@ -206,16 +206,18 @@ footer {
     /* box-shadow: 0 5px 5px hsla(0, 0%, 0%, 0.05); */
     overflow: hidden;
     margin-bottom: 1rem;
+    padding: 20px;
+    font-weight: 700;
   }
   .topic-btn:hover {
     background-color: rgb(241, 238, 238);
     color: orange;
   }
-  .topic-btn p {
+  /* .topic-btn p {
     padding: 10px;
     color: var(--foreground-secondary);
     font-weight: 700;
-  }
+  } */
   .contact {
     margin-bottom: 3rem;
   }

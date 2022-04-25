@@ -61,12 +61,11 @@ const PageDetail = () => {
         <div className="title">
           <h2>{title}</h2>
           <h6>
-            by : {name} | Des 8, 2021 | Pendidikan | {comment.length} comments
+            by : {name} | Des 8, 2021 | Pendidikan | {comment.length} Komentar
           </h6>
         </div>
         <div className="PageDetail-wrapper">
           <Image src={`http://localhost:2020/${image}`} alt="" />
-          <h5>Spread the love</h5>
           <ul class="social-link">
             <li>
               <a
@@ -136,7 +135,10 @@ const PageDetail = () => {
               </a>
             </li>
           </ul>
-          <p>{description}</p>
+          <div
+            className="post__description"
+            dangerouslySetInnerHTML={{ __html: description }}
+          />
         </div>
         {/* <div className="coment">
           <h4>0 Comment</h4>
@@ -149,10 +151,10 @@ const PageDetail = () => {
         </div> */}
         <br />
         <div className="coment">
-          <h4>Submit a Comment</h4>
+          <h4>Kirim Komentar </h4>
           <p>
-            Your email address will not be published. Required fields are marked
-            *
+            Alamat email Anda tidak akan dipublikasikan. Bidang yang harus diisi
+            ditandai *
           </p>
           <Card>
             <Form onSubmit={addCommentHandler}>
@@ -160,10 +162,10 @@ const PageDetail = () => {
                 className="mb-3"
                 controlId="exampleForm.ControlInput1"
               >
-                <Form.Label>Username</Form.Label>
+                <Form.Label>Nama</Form.Label>
                 <Form.Control
                   type="text"
-                  placeholder="Username"
+                  placeholder="Nama"
                   required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
@@ -174,11 +176,11 @@ const PageDetail = () => {
                 controlId="exampleForm.ControlTextarea1"
                 required
               >
-                <Form.Label>Description</Form.Label>
+                <Form.Label>Deskripsi</Form.Label>
                 <Form.Control
                   as="textarea"
                   rows={3}
-                  placeholder="Add Your Comment"
+                  placeholder="Tambahkan Komentar Anda"
                   required
                   value={text}
                   onChange={(e) => setText(e.target.value)}
@@ -187,15 +189,14 @@ const PageDetail = () => {
               <Form.Group className="mb-3">
                 <Form.Check
                   required
-                  label="Save my name and website in this browser for the next time I comment."
-                  feedback="You must agree before submitting."
+                  label="Simpan nama, email, dan situs web saya di browser ini untuk komentar saya berikutnya."
+                  feedback="Anda harus setuju sebelum mengirimkan."
                   feedbackType="invalid"
                 />
               </Form.Group>
-              <Button type="submit">Submit Comment</Button>
+              <Button type="submit">Kirim Komentar</Button>
             </Form>
           </Card>
-          <h4>Kirim Komentar</h4>
           <br />
 
           <div className="coment">
@@ -208,7 +209,6 @@ const PageDetail = () => {
                     <div>
                       <h5>{comments.username}</h5>
                       <p>{comments.text}</p>
-                      <hr />
                     </div>
                   );
                 })
