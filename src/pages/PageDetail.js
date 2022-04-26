@@ -65,7 +65,11 @@ const PageDetail = () => {
           </h6>
         </div>
         <div className="PageDetail-wrapper">
-          <Image src={`http://localhost:2020/${image}`} alt="" />
+          <Image
+            className="imagage"
+            src={`http://localhost:2020/${image}`}
+            alt=""
+          />
           <ul class="social-link">
             <li>
               <a
@@ -136,7 +140,7 @@ const PageDetail = () => {
             </li>
           </ul>
           <div
-            className="post__description"
+            className="container post__description"
             dangerouslySetInnerHTML={{ __html: description }}
           />
         </div>

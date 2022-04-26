@@ -12,28 +12,22 @@ function App() {
   return (
     <div className="App">
       <Router>
+        <Navbar />
         <Switch>
           <Route exact path="/">
-            <Navbar />
             <Home />
-            <Footer />
           </Route>
           <Route path="/about">
-            <Navbar />
             <About />
-            <Footer />
           </Route>
           <Route path="/contact">
-            <Navbar />
             <Contact />
-            <Footer />
           </Route>
           <Route path="/pageDetail/:id">
-            <Navbar />
             <PageDetail />
-            <Footer />
           </Route>
         </Switch>
+        <Footer />
       </Router>
     </div>
   );

@@ -6,12 +6,7 @@ const Contact = () => {
     <div className="Contact">
       <div className="container">
         <div className="mt-4">
-          <h2 style={{ textAlign: "center" }}>Hubungi Kami!</h2>
-          {/* <Image
-            src="https://insights.g2academy.co/wp-content/uploads/2021/09/Logotype.png"
-            alt=""
-          /> */}
-          {/* <p>BERASASI UNTUK MENCIPTAKAN NOL TEKNOLOGI GAP MASYARAKAT</p> */}
+          <h3 className="text-center">Hubungi Kami!</h3>
           <div className="row mt-5">
             <div className="col">
               <iframe
@@ -24,26 +19,33 @@ const Contact = () => {
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
             </div>
-            <div className="col ml-5">
-              <p>
-                <i class="bi bi-geo-alt-fill"></i> Wisma Barito Pacific, Tower A
-                Level Ground, Jl. Letjen S. Parman, Slipi, Jakarta Barat
-              </p>
-              <p>
-                <i class="bi bi-whatsapp"></i> +62 857-7547-5917
-              </p>
-              <p>
-                <i class="bi bi-clock"></i> Sen - Sab, 09:00 - 18:00
-              </p>
-              <p>
-                <i class="bi bi-envelope-fill"></i> cs@g2academy.co
-              </p>
-              <p>
-                <i class="bi bi-instagram"></i> g2academyindonesia
-              </p>
-              <p>
-                <i class="bi bi-facebook"></i> G2Academy
-              </p>
+            <div className="col">
+              <Image
+                src="https://insights.g2academy.co/wp-content/uploads/2021/09/Logotype.png"
+                alt=""
+              />
+              <p>BERASASI UNTUK MENCIPTAKAN NOL TEKNOLOGI GAP MASYARAKAT</p>
+              <div className="contact-icon">
+                <p>
+                  <i class="bi bi-geo-alt-fill"></i> Wisma Barito Pacific, Tower
+                  A Level Ground, Jl. Letjen S. Parman, Slipi, Jakarta Barat
+                </p>
+                <p>
+                  <i class="bi bi-whatsapp"></i> +62 857-7547-5917
+                </p>
+                <p>
+                  <i class="bi bi-clock"></i> Sen - Sab, 09:00 - 18:00
+                </p>
+                <p>
+                  <i class="bi bi-envelope-fill"></i> cs@g2academy.co
+                </p>
+                <p>
+                  <i class="bi bi-instagram"></i> g2academyindonesia
+                </p>
+                <p>
+                  <i class="bi bi-facebook"></i> G2Academy
+                </p>
+              </div>
             </div>
           </div>
         </div>

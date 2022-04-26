@@ -147,9 +147,7 @@ const Home2 = () => {
             <div class="topics">
               <h2 class="h2">Kategori</h2>
               {category.map((blog) => (
-                <div class="topic-btn">
-                  <p>{blog.name}</p>
-                </div>
+                <div class="topic-btn">{blog.name}</div>
               ))}
             </div>
             <div class="contact">
@@ -228,7 +226,9 @@ const Home2 = () => {
                       />
                     </div>
                     <div class="wrapper-text">
-                      <h6>{posts.title}</h6>
+                      <p>
+                        <b>{posts.title}</b>
+                      </p>
                     </div>
                   </div>
                 );
