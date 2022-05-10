@@ -57,7 +57,7 @@ const PageDetail = () => {
 
   return (
     <div className="container">
-      <div className="PageDetail">
+      <div className="PageDetail mt-3">
         <div className="title">
           <h2>{title}</h2>
           <h6>
@@ -70,11 +70,11 @@ const PageDetail = () => {
             src={`http://localhost:2020/${image}`}
             alt=""
           />
-          <ul class="social-link">
-            <li>
+          <div className="social-link">
+            <p>
               <a
                 href="https://www.instagram.com/g2academyindonesia/"
-                class="icon-box"
+                className="icon-box"
               >
                 <Image
                   src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/1200px-Instagram_logo_2016.svg.png"
@@ -86,12 +86,12 @@ const PageDetail = () => {
                   alt=""
                 />
               </a>
-            </li>
+            </p>
 
-            <li>
+            <p>
               <a
                 href="https://api.whatsapp.com/send?text=Raih%20Beasiswa%20Bootcamp%20G2Academy%20Dan%20Wujudkan%20Impianmu%20https%3A%2F%2Finsights.g2academy.co%2Fg2academy-updates%2Fraih-beasiswa-bootcamp-g2academy%2F"
-                class="icon-box"
+                className="icon-box"
               >
                 <Image
                   src="https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN"
@@ -103,12 +103,12 @@ const PageDetail = () => {
                   alt=""
                 />
               </a>
-            </li>
+            </p>
 
-            <li>
+            <p>
               <a
                 href="https://twitter.com/intent/tweet?text=A%20Simple%20Introduction%20to%20Cloud%20Computing&url=https%3A%2F%2Finsights.g2academy.co%2Fg2academy-updates%2Fa-simple-introduction-to-cloud-computing%2F"
-                class="icon-box"
+                className="icon-box"
               >
                 <Image
                   src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBgiEFoK2MpvDZf6xCSwZ0v5hMoC4aQ8qzeaCZK8tKCB6EDKR08LfV-fVcq-P3W1HdVXw&usqp=CAU"
@@ -120,12 +120,12 @@ const PageDetail = () => {
                   alt=""
                 />
               </a>
-            </li>
+            </p>
 
-            <li>
+            <p>
               <a
                 href="https://www.facebook.com/g2academygeeks?_rdc=2&_rdr"
-                class="icon-box"
+                className="icon-box"
               >
                 <Image
                   src="https://www.facebook.com/images/fb_icon_325x325.png"
@@ -137,10 +137,10 @@ const PageDetail = () => {
                   alt=""
                 />
               </a>
-            </li>
-          </ul>
+            </p>
+          </div>
           <div
-            className="container post__description"
+            className="post__description mt-3"
             dangerouslySetInnerHTML={{ __html: description }}
           />
         </div>
@@ -208,9 +208,9 @@ const PageDetail = () => {
 
             <Card>
               {comment.length > 0 ? (
-                comment.map((comments) => {
+                comment.map((comments, index) => {
                   return (
-                    <div>
+                    <div key={index}>
                       <h5>{comments.username}</h5>
                       <p>{comments.text}</p>
                     </div>

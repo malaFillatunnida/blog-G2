@@ -99,7 +99,7 @@ a {
   gap: 5px;
   color: var(--foreground-tertiary);
 }
-.load-more {
+/* .load-more {
   width: 150px;
   background-color: orange;
   border-radius: 20px;
@@ -108,7 +108,7 @@ a {
 }
 .load-more:hover {
   background-color: orange;
-}
+} */
 .aside {
   display: none;
 }
@@ -206,7 +206,6 @@ footer {
     justify-content: center;
     background-color: orange;
     border-radius: 15px;
-    /* box-shadow: 0 5px 5px hsla(0, 0%, 0%, 0.05); */
     overflow: hidden;
     margin-bottom: 1rem;
     padding: 20px;
@@ -217,11 +216,6 @@ footer {
     background-color: rgb(241, 238, 238);
     color: orange;
   }
-  /* .topic-btn p {
-    padding: 10px;
-    color: var(--foreground-secondary);
-    font-weight: 700;
-  } */
   .contact {
     margin-bottom: 3rem;
   }
@@ -230,24 +224,9 @@ footer {
     justify-content: center;
     gap: 10px;
   }
-  .social-link li {
+  /* .social-link li {
   list-style: none;
-}
-
-  /* .social-link .Image {
-    width: 10px;
-    height: 40px;
-    background: var(--action-secondary);
-    border-radius: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 22px;
-    background-color: orange;
-  } */
-  /* .social-link .icon-box:hover {
-    background-color: lightgray;
-  } */
+} */
   .newsletter {
     position: sticky;
     top: 3rem;
@@ -259,46 +238,56 @@ footer {
   .newsletter img {
     width: 100px;
   }
+  .newsletter a {
+    color: black;
+  }
+  .newsletter a:hover {
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      color: blue;
+  }
   .newsletter .wrapper-text {
     font-size: 12px;
     margin-left: 10px;
   }
 }
-.PageDetail {
+/* .PageDetail {
   padding: 20px;
   padding-right: 0;
-}
+} */
 .PageDetail .social-link {
   display: flex;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
 }
-.PageDetail .social-link li {
+/* .PageDetail .social-link li {
   list-style: none;
-}
+} */
 .imagage {
   width: 100%;
   border-radius: 10px;
   object-fit: cover;
   margin-bottom: 2rem;
 }
-/* .post__description img{
-  width: 700px;
-} */
+.post__description img{
+  padding: 60px;
+  width: 100%;
+  object-fit: cover;
+}
 .PageDetail .title {
-  font-size: 27px;
+  /* font-size: 27px; */
   font-family: "Lora", sans-serif;
   margin: auto;
   margin-bottom: 2rem;
 }
-.PageDetail p {
+.PageDetail p{
   color: #666;
   line-height: 25px;
   font-family: "Varela Round", Arial, Helvetica, sans-serif;
 }
-.PageDetail-wrapper h5 {
+/* .PageDetail-wrapper h5 {
   text-align: center;
-}
+} */
 .PageDetail .card {
   padding: 20px;
   line-height: normal;

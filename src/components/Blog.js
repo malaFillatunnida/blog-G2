@@ -1,12 +1,52 @@
 import React, { useState, useEffect } from "react";
 import { Image } from "react-bootstrap";
-// import { useState } from "react";
 import ScrollToTop from "./ScrollToTop";
 import axios from "axios";
+import UserService from "../service/UserService";
 
 // import useInfiniteScroll from "react-infinite-scroll-hook";
 
-const Home2 = () => {
+const Blog = () => {
+  const [userList, setUserList] = useState([]);
+  const [page, setPage] = useState(1);
+  const [loading, setLoading] = useState(false);
+  const [noData, setNoData] = useState(false);
+
+  window.onscroll = () => {
+    if (
+      window.innerHeight + document.documentElement.scrollTop ===
+      document.documentElement.offsetHeight
+    ) {
+      if (!noData) {
+        loadUserList(page);
+      }
+    }
+  };
+
+  useEffect(() => {
+    loadUserList(page);
+  }, []);
+
+  const loadUserList = (page) => {
+    setLoading(true);
+    setTimeout(() => {
+      UserService.getList(page)
+        .then((res) => {
+          const newPage = page + 1;
+          const newList = userList.concat(res.data);
+          setUserList(newList);
+          setPage(newPage);
+          if (res.data.length === 0) setNoData(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    }, 1500);
+  };
+
   // const [data, setData] = useState([]);
 
   // const [since, setSince] = useState(0);
@@ -43,14 +83,20 @@ const Home2 = () => {
   // });
 
   const [post, setPost] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     getPost();
+    getPosts();
   }, []);
 
   const getPost = async () => {
     const post = await axios.get("http://localhost:2020/api/post/");
     setPost(post.data);
+  };
+  const getPosts = async () => {
+    const posts = await axios.get("http://localhost:2020/api/post/");
+    setPosts(posts.data);
   };
 
   const [category, setCategory] = useState([]);
@@ -82,26 +128,26 @@ const Home2 = () => {
 
   return (
     <main>
-      <div class="main">
-        <div class="container">
-          <div class="blog">
-            <div class="blog-card-group">
-              {post.map((posts) => {
+      <div className="main">
+        <div className="container">
+          <div className="blog">
+            <div className="blog-card-group">
+              {post.map((posts, index) => {
                 return (
-                  <div className="item">
-                    <div class="blog-card content">
-                      <div class="blog-card-banner">
+                  <div key={index} className="item">
+                    <div className="blog-card content">
+                      <div className="blog-card-banner">
                         <img
                           src={`http://localhost:2020/${posts.image}`}
                           alt=""
                           width="400"
-                          class="blog-banner-img"
+                          className="blog-banner-img"
                         />
                       </div>
 
-                      <div class="blog-content-wrapper">
+                      <div className="blog-content-wrapper">
                         <h3>
-                          <a href={`/pageDetail/${posts.id}`} class="h3">
+                          <a href={`/pageDetail/${posts.id}`} className="h3">
                             {posts.title}
                           </a>
                         </h3>
@@ -113,15 +159,15 @@ const Home2 = () => {
                           }}
                         />
 
-                        <div class="wrapper-flex">
-                          <div class="wrapper">
-                            <p class="h4">{posts.name}</p>
+                        <div className="wrapper-flex">
+                          <div className="wrapper">
+                            <p className="h4">{posts.name}</p>
 
-                            <p class="text-sm">
-                              <time datetime="2021-09-21">
-                                {/* {posts.createdAt} */}
-                              </time>
-                            </p>
+                            {/* <p className="text-sm"> */}
+                            {/* <time datetime="2021-09-21"> */}
+                            {/* {posts.createdAt} */}
+                            {/* </time> */}
+                            {/* </p> */}
                           </div>
                         </div>
                       </div>
@@ -129,6 +175,13 @@ const Home2 = () => {
                   </div>
                 );
               })}
+              {loading ? <h5 className="text-center">loading data ...</h5> : ""}
+              {noData ? (
+                <h5 className="text-center">no data anymore ...</h5>
+              ) : (
+                ""
+              )}
+
               {/* {(loading || hasNextPage) && (
                 <div className="loader" ref={sentryRef}>
                   <h5>Loading...</h5>
@@ -136,35 +189,37 @@ const Home2 = () => {
               )} */}
             </div>
 
-            {/* <button class="btn load-more">Load More</button> */}
+            {/* <button className="btn load-more">Load More</button> */}
 
             {/* <nav>
-              <ul class="pagination justify-content-center pagination-sm"></ul>
+              <ul className="pagination justify-content-center pagination-sm"></ul>
             </nav> */}
           </div>
 
-          <div class="aside">
-            <div class="topics">
-              <h2 class="h2">Kategori</h2>
-              {category.map((blog) => (
-                <div class="topic-btn">{blog.name}</div>
+          <div className="aside">
+            <div className="topics">
+              <h2 className="h2">Kategori</h2>
+              {category.map((blog, index) => (
+                <div key={index} className="topic-btn">
+                  {blog.name}
+                </div>
               ))}
             </div>
-            <div class="contact">
-              <h2 class="h2">Tentang kami</h2>
+            <div className="contact">
+              <h2 className="h2">Tentang kami</h2>
 
-              <div class="wrapper">
+              <div className="wrapper">
                 <p>
                   Kami memimpikan para penggemar teknologi berkelas dunia dengan
                   memajukan pendidikan teknologi, mengidentifikasi talenta
                   unggul, dan mendukung diskusi yang termutakhir.
                 </p>
 
-                <ul className="social-link">
-                  <li>
+                <div className="social-link">
+                  <p>
                     <a
                       href="https://api.whatsapp.com/send?text=Raih%20Beasiswa%20Bootcamp%20G2Academy%20Dan%20Wujudkan%20Impianmu%20https%3A%2F%2Finsights.g2academy.co%2Fg2academy-updates%2Fraih-beasiswa-bootcamp-g2academy%2F"
-                      class="icon-box discord"
+                      className="icon-box discord"
                     >
                       <Image
                         src="https://play-lh.googleusercontent.com/bYtqbOcTYOlgc6gqZ2rwb8lptHuwlNE75zYJu6Bn076-hTmvd96HH-6v7S0YUAAJXoJN"
@@ -176,12 +231,12 @@ const Home2 = () => {
                         alt=""
                       />
                     </a>
-                  </li>
+                  </p>
 
-                  <li>
+                  <p>
                     <a
                       href="https://twitter.com/intent/tweet?text=A%20Simple%20Introduction%20to%20Cloud%20Computing&url=https%3A%2F%2Finsights.g2academy.co%2Fg2academy-updates%2Fa-simple-introduction-to-cloud-computing%2F"
-                      class="icon-box twitter"
+                      className="icon-box twitter"
                     >
                       <Image
                         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQBgiEFoK2MpvDZf6xCSwZ0v5hMoC4aQ8qzeaCZK8tKCB6EDKR08LfV-fVcq-P3W1HdVXw&usqp=CAU"
@@ -193,12 +248,12 @@ const Home2 = () => {
                         alt=""
                       />
                     </a>
-                  </li>
+                  </p>
 
-                  <li>
+                  <p>
                     <a
                       href="https://www.facebook.com/g2academygeeks?_rdc=2&_rdr"
-                      class="icon-box facebook"
+                      className="icon-box facebook"
                     >
                       <Image
                         src="https://www.facebook.com/images/fb_icon_325x325.png"
@@ -210,24 +265,22 @@ const Home2 = () => {
                         alt=""
                       />
                     </a>
-                  </li>
-                </ul>
+                  </p>
+                </div>
               </div>
             </div>
-            <div class="newsletter">
-              <h2 class="h2">Postingan Terbaru</h2>
-              {post.map((posts) => {
+            <div className="newsletter">
+              <h2 className="h2">Postingan Terbaru</h2>
+              {posts.map((pot, index) => {
+                posts.length = 3;
                 return (
-                  <div class="wrapper">
-                    <div class="wrapper-box">
-                      <img
-                        src={`http://localhost:2020/${posts.image}`}
-                        alt=""
-                      />
+                  <div key={index} className="wrapper">
+                    <div className="wrapper-box">
+                      <img src={`http://localhost:2020/${pot.image}`} alt="" />
                     </div>
-                    <div class="wrapper-text">
+                    <div className="wrapper-text">
                       <p>
-                        <b>{posts.title}</b>
+                        <a href={`/pageDetail/${pot.id}`}>{pot.title}</a>
                       </p>
                     </div>
                   </div>
@@ -242,4 +295,4 @@ const Home2 = () => {
   );
 };
 
-export default Home2;
+export default Blog;

@@ -5,12 +5,12 @@ const aboutFounder = () => {
   return (
     <div className="AboutFounder">
       {/* Desktop */}
-      <div class="container">
-        <div class="d-none d-md-block">
-          <div class="row mt-5 ">
-            <div class="col-md-6">
-              <div class="d-flex h-100">
-                <div class="justify-content-center align-self-center">
+      <div className="container">
+        <div className="d-none d-md-block">
+          <div className="row mt-5 ">
+            <div className="col-md-6">
+              <div className="d-flex h-100">
+                <div className="justify-content-center align-self-center">
                   <h4 style={{ color: "orange" }}>
                     <b> Pendiri </b>
                   </h4>
@@ -44,7 +44,7 @@ const aboutFounder = () => {
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div className="col-md-6">
               <Image
                 src="https://www.g2academy.co/img/founder.a8423787.png"
                 width="100%"
@@ -54,17 +54,17 @@ const aboutFounder = () => {
         </div>
 
         {/* Mobile */}
-        <div class="d-sm-block d-md-none">
-          <div class="row mt-4">
-            <div class="col-md-6 mb-3">
+        <div className="d-sm-block d-md-none">
+          <div className="row mt-4">
+            <div className="col-md-6 mb-3">
               <Image
                 src="https://www.g2academy.co/img/founder.a8423787.png"
                 width="100%"
               />
             </div>
-            <div class="col-md-6">
-              <div class="d-flex h-100">
-                <div class="justify-content-center align-self-center">
+            <div className="col-md-6">
+              <div className="d-flex h-100">
+                <div className="justify-content-center align-self-center">
                   <h4 style={{ color: "orange" }}>Pendiri</h4>
                   <h3>
                     <b>Ferry Sutanto</b>

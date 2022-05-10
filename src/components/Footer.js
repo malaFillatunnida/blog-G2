@@ -21,22 +21,22 @@ const Footer = () => {
 
             <ul className="list-unstyled mb-0">
               <li>
-                <i class="bi bi-envelope"></i> cs@g2academy.co
+                <i className="bi bi-envelope"></i> cs@g2academy.co
               </li>
               <li>
-                <i class="bi bi-whatsapp"></i> +62 813-8822-3105
+                <i className="bi bi-whatsapp"></i> +62 813-8822-3105
               </li>
               <li>
-                <i class="bi bi-facebook"></i> G2Academy
+                <i className="bi bi-facebook"></i> G2Academy
               </li>
               <li>
-                <i class="bi bi-instagram"></i> g2academyindonesia
+                <i className="bi bi-instagram"></i> g2academyindonesia
               </li>
             </ul>
           </div>
 
           <div className="col-lg-3 col-md-6 mb-4 mb-md-0">
-            <h5 class="text-uppercase">Object</h5>
+            <h5 className="text-uppercase">Object</h5>
             <hr />
             <p>
               Wisma Barito Pacific, Tower A Level Ground Jl. Letjen S. Parman,

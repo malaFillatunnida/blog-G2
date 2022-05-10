@@ -6,12 +6,12 @@ const About = () => {
   return (
     <div className="AboutHeader">
       {/* Desktop */}
-      <div class="container">
-        <div class="d-none d-md-block">
-          <div class="row mt-4">
-            <div class="col-md-6">
-              <div class="d-flex h-100">
-                <div class="justify-content-center align-self-center">
+      <div className="container">
+        <div className="d-none d-md-block">
+          <div className="row mt-4">
+            <div className="col-md-6">
+              <div className="d-flex h-100">
+                <div className="justify-content-center align-self-center">
                   <h2>
                     <strong>
                       Tingkatkan
@@ -24,7 +24,7 @@ const About = () => {
                     untuk membantu Anda berkembang di dunia digital.
                   </p>
                   <Link
-                    class="btn btn-lg"
+                    className="btn btn-lg"
                     style={{
                       backgroundColor: "orange",
                       borderRadius: "10px",
@@ -37,7 +37,7 @@ const About = () => {
                 </div>
               </div>
             </div>
-            <div class="col-md-6">
+            <div className="col-md-6">
               <Image
                 src="https://www.g2academy.co/img/hero.4e7737ff.png"
                 width="100%"
@@ -47,17 +47,17 @@ const About = () => {
         </div>
 
         {/* Mobile */}
-        <div class="d-sm-block d-md-none">
-          <div class="row mt-4">
-            <div class="col-md-6 mb-3">
-              <img
+        <div className="d-sm-block d-md-none">
+          <div className="row mt-4">
+            <div className="col-md-6 mb-3">
+              <Image
                 src="https://www.g2academy.co/img/hero.4e7737ff.png"
                 width="100%"
               />
             </div>
-            <div class="col-md-6">
-              <div class="d-flex h-100">
-                <div class="justify-content-center align-self-center">
+            <div className="col-md-6">
+              <div className="d-flex h-100">
+                <div className="justify-content-center align-self-center">
                   <h2>
                     <strong>Tingkatkan</strong>
                     <br />
@@ -68,7 +68,7 @@ const About = () => {
                     membantu Anda berkembang di dunia digital.
                   </p>
                   <button
-                    class="btn btn-lg"
+                    className="btn btn-lg"
                     style={{
                       backgroundColor: "orange",
                       borderRadius: "10px",

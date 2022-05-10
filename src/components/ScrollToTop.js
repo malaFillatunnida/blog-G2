@@ -26,7 +26,7 @@ const App = () => {
     <div className="container">
       {showButton && (
         <button onClick={scrollToTop} className="back-to-top">
-          <i class="bi bi-arrow-up-short"></i>
+          <i className="bi bi-arrow-up-short"></i>
         </button>
       )}
     </div>

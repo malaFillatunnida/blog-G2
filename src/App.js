@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import "./home.css";
 import PageDetail from "./pages/PageDetail";
+import Infinite from "./service/Infinite";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <div className="App">
       <Router>
         <Navbar />
+        {/* <Infinite /> */}
         <Switch>
           <Route exact path="/">
             <Home />
