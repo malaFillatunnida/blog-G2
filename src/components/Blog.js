@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Image } from "react-bootstrap";
 import ScrollToTop from "./ScrollToTop";
 import axios from "axios";
-import UserService from "../service/UserService";
+import UserService from "./UserService";
 
 // import useInfiniteScroll from "react-infinite-scroll-hook";
 
@@ -33,10 +33,10 @@ const Blog = () => {
       UserService.getList(page)
         .then((res) => {
           const newPage = page + 1;
-          const newList = userList.concat(res.data);
+          const newList = userList.concat(res.tutorials);
           setUserList(newList);
           setPage(newPage);
-          if (res.data.length === 0) setNoData(true);
+          if (res.tutorials.length === 0) setNoData(true);
         })
         .catch((err) => {
           console.log(err);
@@ -46,41 +46,6 @@ const Blog = () => {
         });
     }, 1500);
   };
-
-  // const [data, setData] = useState([]);
-
-  // const [since, setSince] = useState(0);
-  // const [limit, setLimit] = useState(3);
-
-  // const [loading, setLoading] = useState(false);
-
-  // const [hasNextPage, setHasNextPage] = useState(true);
-
-  // const fetchmore = async (since) => {
-  //   setLoading(true);
-  //   setSince(since + limit);
-  //   try {
-  //     const response = await fetch(
-  //       `https://api.github.com/users?since=${since}&per_page=${limit}`
-  //     );
-  //     const json = await response.json();
-  //     return setData((data) => [...data, ...json]);
-  //   } catch (e) {
-  //     console.log(e);
-  //     return setHasNextPage(false);
-  //   } finally {
-  //     return setLoading(false);
-  //   }
-  // };
-
-  // const [sentryRef] = useInfiniteScroll({
-  //   loading,
-  //   hasNextPage: hasNextPage,
-  //   delayInMs: 500,
-  //   onLoadMore: () => {
-  //     fetchmore(since);
-  //   },
-  // });
 
   const [post, setPost] = useState([]);
   const [posts, setPosts] = useState([]);
@@ -110,78 +75,59 @@ const Blog = () => {
     setCategory(category.data);
   };
 
-  // const deletePost = async (id) => {
-  //   await axios.delete(`http://localhost:4000/post/${id}`);
-  //   getPost();
-  // };
-
-  // const [kategori, setKategori] = useState([]);
-
-  // useEffect(() => {
-  //   getKategori();
-  // }, []);
-
-  // const getKategori = async () => {
-  //   const kategori = await axios.get("http://localhost:4000/kategori");
-  //   setKategori(kategori.data);
-  // };
-
   return (
     <main>
       <div className="main">
         <div className="container">
           <div className="blog">
             <div className="blog-card-group">
-              {post.map((posts, index) => {
-                return (
-                  <div key={index} className="item">
-                    <div className="blog-card content">
-                      <div className="blog-card-banner">
-                        <img
-                          src={`http://localhost:2020/${posts.image}`}
-                          alt=""
-                          width="400"
-                          className="blog-banner-img"
-                        />
-                      </div>
+              {userList.map((user, i) => (
+                <div key={i} className="item">
+                  <div className="blog-card content">
+                    <div className="blog-card-banner">
+                      <img
+                        src={`http://localhost:2020/${user.image}`}
+                        alt=""
+                        width="400"
+                        className="blog-banner-img"
+                      />
+                    </div>
 
-                      <div className="blog-content-wrapper">
-                        <h3>
-                          <a href={`/pageDetail/${posts.id}`} className="h3">
-                            {posts.title}
-                          </a>
-                        </h3>
+                    <div className="blog-content-wrapper">
+                      <h3>
+                        <a href={`/pageDetail/${user.id}`} className="h3">
+                          {user.title}
+                        </a>
+                      </h3>
 
-                        <div
-                          className="blog-text"
-                          dangerouslySetInnerHTML={{
-                            __html: posts.description,
-                          }}
-                        />
+                      <div
+                        className="blog-text"
+                        dangerouslySetInnerHTML={{
+                          __html: user.description,
+                        }}
+                      />
 
-                        <div className="wrapper-flex">
-                          <div className="wrapper">
-                            <p className="h4">{posts.name}</p>
+                      <div className="wrapper-flex">
+                        <div className="wrapper">
+                          <p className="h4">{user.name}</p>
 
-                            {/* <p className="text-sm"> */}
-                            {/* <time datetime="2021-09-21"> */}
-                            {/* {posts.createdAt} */}
-                            {/* </time> */}
-                            {/* </p> */}
-                          </div>
+                          {/* <p className="text-sm"> */}
+                          {/* <time datetime="2021-09-21"> */}
+                          {/* {posts.createdAt} */}
+                          {/* </time> */}
+                          {/* </p> */}
                         </div>
                       </div>
                     </div>
                   </div>
-                );
-              })}
+                </div>
+              ))}
               {loading ? <h5 className="text-center">loading data ...</h5> : ""}
               {noData ? (
                 <h5 className="text-center">no data anymore ...</h5>
               ) : (
                 ""
               )}
-
               {/* {(loading || hasNextPage) && (
                 <div className="loader" ref={sentryRef}>
                   <h5>Loading...</h5>
