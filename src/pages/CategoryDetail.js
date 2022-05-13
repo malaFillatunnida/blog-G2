@@ -5,7 +5,7 @@ const CategoryDetail = () => {
   return (
     <div className="categoryDetail mt-4 mb-5">
       <div className="container">
-        <h3 className="text-center">Pendidikan</h3>
+        <h3 className="text-center">Jenis Kategori</h3>
         <hr className="m-0" />
         <Row>
           <Col md={4} xs={12} className="mt-4">

@@ -107,12 +107,6 @@ const Blog = () => {
                       <div className="wrapper-flex">
                         <div className="wrapper">
                           <p className="h4">{user.name}</p>
-
-                          {/* <p className="text-sm"> */}
-                          {/* <time datetime="2021-09-21"> */}
-                          {/* {posts.createdAt} */}
-                          {/* </time> */}
-                          {/* </p> */}
                         </div>
                       </div>
                     </div>
@@ -132,9 +126,9 @@ const Blog = () => {
             <div className="topics">
               <h2 className="h2">Kategori</h2>
               {category.map((blog, index) => (
-                <div key={index} className="topic-btn">
+                <a href="/categoryDetail" key={index} className="topic-btn">
                   {blog.name}
-                </div>
+                </a>
               ))}
             </div>
             <div className="contact">
