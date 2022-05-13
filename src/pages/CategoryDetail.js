@@ -32,7 +32,7 @@ const CategoryDetail = () => {
                   </Card.Text>
                   <div className="categoryLink text-start">
                     <b>
-                      <a href="#">
+                      <a href="/pageDetail">
                         Baca Selengkapnya <i className="bi bi-arrow-right"></i>
                       </a>
                     </b>
@@ -65,7 +65,7 @@ const CategoryDetail = () => {
                   </Card.Text>
                   <div className="categoryLink text-start">
                     <b>
-                      <a href="#">
+                      <a href="/pageDetail">
                         Baca Selengkapnya <i className="bi bi-arrow-right"></i>
                       </a>
                     </b>
@@ -98,7 +98,7 @@ const CategoryDetail = () => {
                   </Card.Text>
                   <div className="categoryLink text-start">
                     <b>
-                      <a href="#">
+                      <a href="/pageDetail">
                         Baca Selengkapnya <i className="bi bi-arrow-right"></i>
                       </a>
                     </b>

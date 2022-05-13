@@ -197,6 +197,24 @@ const Blog = () => {
             </div>
             <div className="newsletter">
               <h2 className="h2">Postingan Terbaru</h2>
+              {post.map((post, index) => {
+                // posts.length = 4;
+                return (
+                  <div key={index} className="wrapper">
+                    <div className="wrapper-box">
+                      <img src={`http://localhost:2020/${post.image}`} alt="" />
+                    </div>
+                    <div className="wrapper-text">
+                      <p>
+                        <a href={`/pageDetail/${post.id}`}>{post.title}</a>
+                      </p>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            {/* <div className="newsletter">
+              <h2 className="h2">Postingan Terbaru</h2>
               {posts.map((pot, index) => {
                 posts.length = 4;
                 return (
@@ -212,7 +230,7 @@ const Blog = () => {
                   </div>
                 );
               })}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>
