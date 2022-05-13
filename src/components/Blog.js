@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Image } from "react-bootstrap";
-import ScrollToTop from "./ScrollToTop";
 import axios from "axios";
 import UserService from "./UserService";
 
-// import useInfiniteScroll from "react-infinite-scroll-hook";
-
 const Blog = () => {
   const [userList, setUserList] = useState([]);
-  const [page, setPage] = useState(1);
+  const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
   const [noData, setNoData] = useState(false);
 
@@ -77,7 +74,7 @@ const Blog = () => {
 
   return (
     <main>
-      <div className="main">
+      <div className="main mb-5">
         <div className="container">
           <div className="blog">
             <div className="blog-card-group">
@@ -128,18 +125,7 @@ const Blog = () => {
               ) : (
                 ""
               )}
-              {/* {(loading || hasNextPage) && (
-                <div className="loader" ref={sentryRef}>
-                  <h5>Loading...</h5>
-                </div>
-              )} */}
             </div>
-
-            {/* <button className="btn load-more">Load More</button> */}
-
-            {/* <nav>
-              <ul className="pagination justify-content-center pagination-sm"></ul>
-            </nav> */}
           </div>
 
           <div className="aside">
@@ -218,7 +204,7 @@ const Blog = () => {
             <div className="newsletter">
               <h2 className="h2">Postingan Terbaru</h2>
               {posts.map((pot, index) => {
-                posts.length = 3;
+                posts.length = 4;
                 return (
                   <div key={index} className="wrapper">
                     <div className="wrapper-box">
@@ -234,7 +220,6 @@ const Blog = () => {
               })}
             </div>
           </div>
-          <ScrollToTop />
         </div>
       </div>
     </main>

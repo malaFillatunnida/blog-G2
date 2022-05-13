@@ -6,6 +6,7 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import "./home.css";
 import PageDetail from "./pages/PageDetail";
+import CategoryDetail from "./pages/CategoryDetail";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -22,6 +23,9 @@ function App() {
           </Route>
           <Route path="/contact">
             <Contact />
+          </Route>
+          <Route path="/categoryDetail">
+            <CategoryDetail />
           </Route>
           <Route path="/pageDetail/:id">
             <PageDetail />

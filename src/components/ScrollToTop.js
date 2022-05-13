@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const App = () => {
   // The back-to-top button is hidden at the beginning

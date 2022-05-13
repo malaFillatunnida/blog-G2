@@ -1,6 +1,5 @@
-// import React, { useState, useEffect } from "react";
+import React from "react";
 import { Image } from "react-bootstrap";
-// import axios from "axios";
 
 const Home = () => {
   return (
@@ -8,7 +7,7 @@ const Home = () => {
       {/* Desktop */}
       <div className="container">
         <div className="d-none d-md-block">
-          <div className="row mt-4">
+          <div className="row mt-4 mb-5">
             <div className="col-md-6">
               <div className="d-flex h-100">
                 <div className="justify-content-center align-self-center">

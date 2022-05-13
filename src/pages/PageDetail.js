@@ -30,7 +30,7 @@ const PageDetail = () => {
       const { data } = await axios.get(
         `http://localhost:2020/api/post/getPostComment/${id}`
       );
-      console.log(data);
+      // console.log(data);
 
       setTitle(data.title);
       setName(data.name);
@@ -144,15 +144,6 @@ const PageDetail = () => {
             dangerouslySetInnerHTML={{ __html: description }}
           />
         </div>
-        {/* <div className="coment">
-          <h4>0 Comment</h4>
-          <h4>Submit a Comment</h4>
-          
-                <p key={comments.id}>
-                  Username:  <br /> 
-                </p>
-              
-        </div> */}
         <br />
         <div className="coment">
           <h4>Kirim Komentar </h4>
