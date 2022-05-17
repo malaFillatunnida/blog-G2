@@ -81,14 +81,11 @@ const Blog = () => {
               {userList.map((user, i) => (
                 <div key={i} className="item">
                   <div className="blog-card content">
-                    <div className="blog-card-banner">
-                      <img
-                        src={`http://localhost:2020/${user.image}`}
-                        alt=""
-                        width="400"
-                        className="blog-banner-img"
-                      />
-                    </div>
+                    <img
+                      src={`http://localhost:2020/${user.image}`}
+                      alt=""
+                      width="100%"
+                    />
 
                     <div className="blog-content-wrapper">
                       <h3>
@@ -96,14 +93,12 @@ const Blog = () => {
                           {user.title}
                         </a>
                       </h3>
-
                       <div
                         className="blog-text"
                         dangerouslySetInnerHTML={{
                           __html: user.description,
                         }}
                       />
-
                       <div className="wrapper-flex">
                         <div className="wrapper">
                           <p className="h4">{user.name}</p>
@@ -122,9 +117,9 @@ const Blog = () => {
             </div>
           </div>
 
-          <div className="aside">
+          <div className="col aside">
             <div className="topics">
-              <h2 className="h2">Kategori</h2>
+              <h2 className="h2 text-center">Kategori</h2>
               {category.map((blog, index) => (
                 <a href="/categoryDetail" key={index} className="topic-btn">
                   {blog.name}
@@ -132,10 +127,10 @@ const Blog = () => {
               ))}
             </div>
             <div className="contact">
-              <h2 className="h2">Tentang kami</h2>
+              <h2 className="h2 text-center">Tentang kami</h2>
 
               <div className="wrapper">
-                <p>
+                <p className="text-center">
                   Kami memimpikan para penggemar teknologi berkelas dunia dengan
                   memajukan pendidikan teknologi, mengidentifikasi talenta
                   unggul, dan mendukung diskusi yang termutakhir.
@@ -197,24 +192,6 @@ const Blog = () => {
             </div>
             <div className="newsletter">
               <h2 className="h2">Postingan Terbaru</h2>
-              {post.map((post, index) => {
-                // posts.length = 4;
-                return (
-                  <div key={index} className="wrapper">
-                    <div className="wrapper-box">
-                      <img src={`http://localhost:2020/${post.image}`} alt="" />
-                    </div>
-                    <div className="wrapper-text">
-                      <p>
-                        <a href={`/pageDetail/${post.id}`}>{post.title}</a>
-                      </p>
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-            {/* <div className="newsletter">
-              <h2 className="h2">Postingan Terbaru</h2>
               {posts.map((pot, index) => {
                 posts.length = 4;
                 return (
@@ -230,7 +207,7 @@ const Blog = () => {
                   </div>
                 );
               })}
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
