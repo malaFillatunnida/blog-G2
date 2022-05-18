@@ -101,7 +101,7 @@ const Blog = () => {
                       />
                       <div className="wrapper-flex">
                         <div className="wrapper">
-                          <p className="h4">{user.name}</p>
+                          <p className="h4">{user.username}</p>
                         </div>
                       </div>
                     </div>
@@ -121,7 +121,11 @@ const Blog = () => {
             <div className="topics">
               <h2 className="h2 text-center">Kategori</h2>
               {category.map((blog, index) => (
-                <a href="/categoryDetail" key={index} className="topic-btn">
+                <a
+                  href={`/categoryDetail/${blog.id}`}
+                  key={index}
+                  className="topic-btn"
+                >
                   {blog.name}
                 </a>
               ))}

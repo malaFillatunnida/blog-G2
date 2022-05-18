@@ -1,113 +1,80 @@
-import React from "react";
-import { Row, Col, Card } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { useHistory, useParams } from "react-router-dom";
 
 const CategoryDetail = () => {
+  const { id } = useParams();
+
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState([]);
+  const [post, setPost] = useState([]);
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [image, setImage] = useState("");
+  useEffect(() => {
+    getAllCategory();
+  }, []);
+
+  const getAllCategory = async () => {
+    const category = await axios.get(`http://localhost:2020/api/category/`);
+    setCategory(category.data);
+  };
+
+  useEffect(() => {
+    const getOnePost = async () => {
+      const { data } = await axios.get(
+        `http://localhost:2020/api/category/${id}`
+      );
+      // console.log(data);
+
+      setName(data.name);
+
+      setTitle(data.title);
+      setDescription(data.description);
+      setImage(data.image);
+      setPost(data.post);
+    };
+    getOnePost();
+  }, [id]);
+
   return (
-    <div className="categoryDetail mt-4 mb-5">
+    <div className="categoryDetail mt-4">
       <div className="container">
-        <h3 className="text-center">Jenis Kategori</h3>
-        <hr className="m-0" />
-        <Row>
-          <Col md={4} xs={12} className="mt-4">
-            <Card className="shadow my-2">
-              <div>
-                <Card.Img
-                  className="images"
-                  src="https://insights.g2academy.co/wp-content/uploads/2021/12/Java-tips-for-beginners-scaled.jpg"
-                />
-                <Card.Body>
-                  <Card.Title className="text-center">
-                    <h5> Tip Coding Java Untuk Pemula </h5>
-                  </Card.Title>
-                  <hr className="mt-0" />
-                  <Card.Text className="category-text text-start">
-                    Kiat Pengodean Java untuk Pemula –Digunakan oleh lebih
-                    dari10 juta pengembang dan berjalan di 56 miliar perangkat
-                    di seluruh dunia, Java dengan mudah menjadi salah satu
-                    bahasa pemrograman paling populer di luar sana. Banyak
-                    pengembang lebih menyukainya daripada yang lain karena
-                    fleksibilitas dan portabelnya, memungkinkan mereka untuk
-                    menulis kode untuk mesin dari berbagai arsitektur dan
-                    platform.
-                  </Card.Text>
-                  <div className="categoryLink text-start">
+        <h3 className="text-center">{name}</h3>
+        <hr />
+        <div className="row mt-4 mb-5">
+          {post.map((comments, index) => {
+            return (
+              <div className="col-sm-4 p-3" key={index}>
+                <div className="card">
+                  <img
+                    src={`http://localhost:2020/${comments.image}`}
+                    className="card-img-top"
+                    alt=""
+                  />
+                  <div className="card-body">
+                    <h5 className="card-title text-center">{comments.title}</h5>
+                    <hr className="mt-0" />
+                    <div
+                      className="category-text post__description mt-3"
+                      dangerouslySetInnerHTML={{
+                        __html: comments.description,
+                      }}
+                    />
+                  </div>
+                  <div className="categoryLink p-3">
                     <b>
-                      <a href="/pageDetail">
+                      <a href={`/pageDetail/${comments.id}`}>
                         Baca Selengkapnya <i className="bi bi-arrow-right"></i>
                       </a>
                     </b>
                   </div>
-                </Card.Body>
+                </div>
               </div>
-            </Card>
-          </Col>
-          <Col md={4} xs={12} className="mt-4">
-            <Card className="shadow my-2">
-              <div>
-                <Card.Img
-                  className="images"
-                  src="https://insights.g2academy.co/wp-content/uploads/2021/12/Java-tips-for-beginners-scaled.jpg"
-                />
-                <Card.Body>
-                  <Card.Title className="text-center">
-                    Tip Coding Java Untuk Pemula
-                  </Card.Title>
-                  <hr className="mt-0" />
-                  <Card.Text className="category-text text-start">
-                    Kiat Pengodean Java untuk Pemula –Digunakan oleh lebih
-                    dari10 juta pengembang dan berjalan di 56 miliar perangkat
-                    di seluruh dunia, Java dengan mudah menjadi salah satu
-                    bahasa pemrograman paling populer di luar sana. Banyak
-                    pengembang lebih menyukainya daripada yang lain karena
-                    fleksibilitas dan portabelnya, memungkinkan mereka untuk
-                    menulis kode untuk mesin dari berbagai arsitektur dan
-                    platform.
-                  </Card.Text>
-                  <div className="categoryLink text-start">
-                    <b>
-                      <a href="/pageDetail">
-                        Baca Selengkapnya <i className="bi bi-arrow-right"></i>
-                      </a>
-                    </b>
-                  </div>
-                </Card.Body>
-              </div>
-            </Card>
-          </Col>
-          <Col md={4} xs={12} className="mt-4">
-            <Card className="shadow my-2">
-              <div>
-                <Card.Img
-                  className="images"
-                  src="https://insights.g2academy.co/wp-content/uploads/2021/12/Java-tips-for-beginners-scaled.jpg"
-                />
-                <Card.Body>
-                  <Card.Title className="text-center">
-                    Tip Coding Java Untuk Pemula
-                  </Card.Title>
-                  <hr className="mt-0" />
-                  <Card.Text className="category-text text-start">
-                    Kiat Pengodean Java untuk Pemula –Digunakan oleh lebih
-                    dari12 juta pengembang dan berjalan di 56 miliar perangkat
-                    di seluruh dunia, Java dengan mudah menjadi salah satu
-                    bahasa pemrograman paling populer di luar sana. Banyak
-                    pengembang lebih menyukainya daripada yang lain karena
-                    fleksibilitas dan portabelnya, memungkinkan mereka untuk
-                    menulis kode untuk mesin dari berbagai arsitektur dan
-                    platform.
-                  </Card.Text>
-                  <div className="categoryLink text-start">
-                    <b>
-                      <a href="/pageDetail">
-                        Baca Selengkapnya <i className="bi bi-arrow-right"></i>
-                      </a>
-                    </b>
-                  </div>
-                </Card.Body>
-              </div>
-            </Card>
-          </Col>
-        </Row>
+            );
+          })}
+        </div>
       </div>
     </div>
   );

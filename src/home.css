@@ -122,17 +122,12 @@ footer {
     font-size: var(--fs-4);
     display: -webkit-box;
     line-clamp: 3;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin-bottom: 1rem;
     width: 400px;
   }
-  /* .blog .bungkus {
-    flex-direction: column;
-    align-items: start;
-    gap: 0;
-  } */
 }
 @media (min-width: 768px) {
   .category-text {
@@ -140,7 +135,7 @@ footer {
     font-size: var(--fs-4);
     display: -webkit-box;
     line-clamp: 3;
-    -webkit-line-clamp: 4;
+    -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
     margin-bottom: 1rem;

@@ -24,7 +24,7 @@ function App() {
           <Route path="/contact">
             <Contact />
           </Route>
-          <Route path="/categoryDetail">
+          <Route path="/categoryDetail/:id">
             <CategoryDetail />
           </Route>
           <Route path="/pageDetail/:id">
