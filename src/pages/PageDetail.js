@@ -7,12 +7,14 @@ const PageDetail = () => {
   const { id } = useParams();
 
   const [title, setTitle] = useState("");
-  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
   const [description, setDescription] = useState("");
   const [image, setImage] = useState("");
+  const [created_at, setCreated_at] = useState("");
 
   const [comment, setComment] = useState([]);
-  const [username, setUsername] = useState("");
+  const [category, setCategory] = useState([]);
+  const [usernama, setUsernama] = useState("");
   const [text, setText] = useState("");
   const history = useHistory();
 
@@ -33,11 +35,13 @@ const PageDetail = () => {
       // console.log(data);
 
       setTitle(data.title);
-      setName(data.name);
+      setUsername(data.username);
       setDescription(data.description);
       setImage(data.image);
+      setCreated_at(data.created_at);
 
       setComment(data.comment);
+      setCategory(data.category);
     };
     getOnePost();
   }, [id]);
@@ -47,7 +51,7 @@ const PageDetail = () => {
 
     let comment = {
       post_id: id,
-      username: username,
+      usernama: usernama,
       text: text,
     };
 
@@ -61,7 +65,8 @@ const PageDetail = () => {
         <div className="title">
           <h2>{title}</h2>
           <h6>
-            by : {name} | Des 8, 2021 | Pendidikan | {comment.length} Komentar
+            by : {username} | {created_at} | {category.name} | {comment.length}{" "}
+            Komentar
           </h6>
         </div>
         <div className="PageDetail-wrapper">
@@ -162,8 +167,8 @@ const PageDetail = () => {
                   type="text"
                   placeholder="Nama"
                   required
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
+                  value={usernama}
+                  onChange={(e) => setUsernama(e.target.value)}
                 />
               </Form.Group>
               <Form.Group
@@ -181,14 +186,6 @@ const PageDetail = () => {
                   onChange={(e) => setText(e.target.value)}
                 />
               </Form.Group>
-              <Form.Group className="mb-3">
-                <Form.Check
-                  required
-                  label="Simpan nama, email, dan situs web saya di browser ini untuk komentar saya berikutnya."
-                  feedback="Anda harus setuju sebelum mengirimkan."
-                  feedbackType="invalid"
-                />
-              </Form.Group>
               <Button type="submit">Kirim Komentar</Button>
             </Form>
           </Card>
@@ -202,7 +199,7 @@ const PageDetail = () => {
                 comment.map((comments, index) => {
                   return (
                     <div key={index}>
-                      <h5>{comments.username}</h5>
+                      <h5>{comments.usernama}</h5>
                       <p>{comments.text}</p>
                     </div>
                   );

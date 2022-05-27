@@ -45,20 +45,14 @@ const Blog = () => {
   };
 
   const [post, setPost] = useState([]);
-  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     getPost();
-    getPosts();
   }, []);
 
   const getPost = async () => {
     const post = await axios.get("http://localhost:2020/api/post/");
     setPost(post.data);
-  };
-  const getPosts = async () => {
-    const posts = await axios.get("http://localhost:2020/api/post/");
-    setPosts(posts.data);
   };
 
   const [category, setCategory] = useState([]);
@@ -88,6 +82,11 @@ const Blog = () => {
                     />
 
                     <div className="blog-content-wrapper">
+                      <a href={`/categoryDetail/${user.id}`}>
+                        <button className="blog-topic text-tiny">
+                          {user.category.name}
+                        </button>
+                      </a>
                       <h3>
                         <a href={`/pageDetail/${user.id}`} className="h3">
                           {user.title}
@@ -102,6 +101,7 @@ const Blog = () => {
                       <div className="wrapper-flex">
                         <div className="wrapper">
                           <p className="h4">{user.username}</p>
+                          <p className="h4">{user.created_at}</p>
                         </div>
                       </div>
                     </div>
@@ -117,18 +117,20 @@ const Blog = () => {
             </div>
           </div>
 
-          <div className="col aside">
+          <div className="aside">
             <div className="topics">
               <h2 className="h2 text-center">Kategori</h2>
-              {category.map((blog, index) => (
-                <a
-                  href={`/categoryDetail/${blog.id}`}
-                  key={index}
-                  className="topic-btn"
-                >
-                  {blog.name}
-                </a>
-              ))}
+              <div className="category-box">
+                {category.map((blog, index) => (
+                  <a
+                    href={`/categoryDetail/${blog.id}`}
+                    key={index}
+                    className="topic-btn"
+                  >
+                    {blog.name}
+                  </a>
+                ))}
+              </div>
             </div>
             <div className="contact">
               <h2 className="h2 text-center">Tentang kami</h2>
@@ -196,8 +198,8 @@ const Blog = () => {
             </div>
             <div className="newsletter">
               <h2 className="h2">Postingan Terbaru</h2>
-              {posts.map((pot, index) => {
-                posts.length = 4;
+              {post.map((pot, index) => {
+                post.length = 4;
                 return (
                   <div key={index} className="wrapper">
                     <div className="wrapper-box">
