@@ -8,7 +8,6 @@ import "./home.css";
 import PageDetail from "./pages/PageDetail";
 import CategoryDetail from "./pages/CategoryDetail";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import SearchBar from "./components/SearchBar";
 
 function App() {
   return (
@@ -30,9 +29,6 @@ function App() {
           </Route>
           <Route path="/pageDetail/:id">
             <PageDetail />
-          </Route>
-          <Route path="/search">
-            <SearchBar />
           </Route>
         </Switch>
         <Footer />

@@ -93,11 +93,13 @@ const CategoryDetail = () => {
                   <div className="blog-card content">
                     <img
                       src={`http://localhost:2020/${comments.image}`}
-                      className="card-img-top"
+                      className="card-img-top blog-image"
                       alt=""
                     />
                     <div className="blog-content-wrapper">
-                      <h5 className="card-title">{comments.title}</h5>
+                      <h5>
+                        <b>{comments.title}</b>
+                      </h5>
                       <div
                         className="category-text post__description mt-2"
                         dangerouslySetInnerHTML={{

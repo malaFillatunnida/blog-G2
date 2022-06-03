@@ -4,6 +4,7 @@ import axios from "axios";
 import UserService from "./UserService";
 
 const Blog = () => {
+  //validasi infinite scroll
   const [userList, setUserList] = useState([]);
   const [page, setPage] = useState(0);
   const [loading, setLoading] = useState(false);
@@ -19,10 +20,6 @@ const Blog = () => {
       }
     }
   };
-
-  useEffect(() => {
-    loadUserList(page);
-  }, []);
 
   const loadUserList = (page) => {
     setLoading(true);
@@ -45,21 +42,18 @@ const Blog = () => {
   };
 
   const [post, setPost] = useState([]);
+  const [category, setCategory] = useState([]);
 
   useEffect(() => {
+    loadUserList(page);
     getPost();
+    getCategory();
   }, []);
 
   const getPost = async () => {
     const post = await axios.get("http://localhost:2020/api/post/");
     setPost(post.data);
   };
-
-  const [category, setCategory] = useState([]);
-
-  useEffect(() => {
-    getCategory();
-  }, []);
 
   const getCategory = async () => {
     const category = await axios.get("http://localhost:2020/api/category/");
@@ -77,12 +71,12 @@ const Blog = () => {
                   <div className="blog-card content">
                     <img
                       src={`http://localhost:2020/${user.image}`}
+                      className="blog-image"
                       alt=""
-                      width="100%"
                     />
 
                     <div className="blog-content-wrapper">
-                      <a href={`/categoryDetail/${user.id}`}>
+                      <a href={`/categoryDetail/${user.category.id}`}>
                         <button className="blog-topic text-tiny">
                           {user.category.name}
                         </button>
