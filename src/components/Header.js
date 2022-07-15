@@ -3,6 +3,7 @@ import { Image } from "react-bootstrap";
 
 const Home = () => {
   return (
+    //Awal Home
     <div className="header">
       {/* Desktop */}
       <div className="container">
